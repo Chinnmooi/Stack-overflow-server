@@ -13,7 +13,7 @@ import morgan from 'morgan';
 //import MongoStore from 'connect-mongo'
 import * as dotenv from 'dotenv' // see https://github.com/motdotla/dotenv#how-do-i-use-dotenv-with-import
 dotenv.config()
-
+console.log("Life's weird");
 // Get the directory name of the current module
 
 // Specify the custom path to your .env file
