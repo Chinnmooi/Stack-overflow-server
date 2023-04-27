@@ -6,6 +6,7 @@ import userRoutes from "./routes/users.js";
 import questionRoutes from "./routes/Questions.js";
 import answerRoutes from "./routes/Answers.js";
 import paymentRoutes from "./routes/Payment.js"
+import chatRouter from "./routes/chatbot.js"
 import connectDB from "./connectMongoDb.js";
 import socialMediaRoutes from './routes/SocialMedia.js'
 import morgan from 'morgan';
@@ -49,6 +50,7 @@ app.use("/questions", questionRoutes);
 app.use("/answer", answerRoutes);
 app.use("/payments",paymentRoutes);
 app.use("/socialmedia", socialMediaRoutes)
+app.use("/chatBot", chatRouter)
 const PORT = process.env.PORT || 5000;
 app.use((err,req,res,next)=>{
   const {status = 500, message = 'Something went wrong'} = err;
