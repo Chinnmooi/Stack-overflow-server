@@ -47,6 +47,6 @@ export const getCurrentUser = async(req,res) => {
     res.status(200).json(user);
   }
   catch(err){
-    res.status(404).json({ message: err.message });
+    res.status(402).json({ message: err.message });
   }
 }

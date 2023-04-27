@@ -9,11 +9,8 @@ import paymentRoutes from "./routes/Payment.js"
 import connectDB from "./connectMongoDb.js";
 import socialMediaRoutes from './routes/SocialMedia.js'
 import morgan from 'morgan';
-<<<<<<< HEAD
 //import session from 'express-session';
-//import MongoStore from 'connect-mongo';
-=======
->>>>>>> 0f41e499d92c67b69a0f1a6adaae9f4490ff6f29
+//import MongoStore from 'connect-mongo'
 import * as dotenv from 'dotenv' // see https://github.com/motdotla/dotenv#how-do-i-use-dotenv-with-import
 dotenv.config()
 
