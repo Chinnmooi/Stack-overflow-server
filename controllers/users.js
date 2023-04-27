@@ -39,3 +39,14 @@ export const updateProfile = async (req, res) => {
     res.status(405).json({ message: error.message });
   }
 };
+
+export const getCurrentUser = async(req,res) => {
+  const {ui} = req.params;
+  try{
+    const user = await users.findById(ui);
+    res.status(200).json(user);
+  }
+  catch(err){
+    res.status(404).json({ message: err.message });
+  }
+}
