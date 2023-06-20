@@ -1,12 +1,32 @@
 import Users from '../models/auth.js'
 import Posts from '../models/posts.js';
 import AppError from '../AppError.js';
-
-export const  makePost = async (req,res) =>{console.log("Life suckas")
-     //console.log(req.file,"file");
+import { google } from "googleapis";
+import stream from "stream";
+const uploadFile = async (fileObject) => {
+     const bufferStream = new stream.PassThrough();
+     bufferStream.end(fileObject.buffer);
+     const { data } = await google.drive({ version: 'v3' }).files.create({
+       media: {
+         mimeType: fileObject.mimeType,
+         body: bufferStream,
+       },
+       requestBody: {
+         name: fileObject.originalname,
+         parents: ['DRIVE_FOLDER_ID'],
+       },
+       fields: 'id,name',
+     });
+     console.log(`Uploaded file ${data.name} ${data.id}`);
+   };
+export const  makePost = async (req,res) =>{
+     console.log("nayi tikka dengodu");
+     console.log(req.file,"file");
      console.log(req.body,"body");
      const {ui} = req.params;
+     console.log(ui);
      let user = await Users.findById(ui)
+
      //console.log(user," ",ui)
      if(!user)return new Error()//AppError("User not foound",501);
      //return new error()
@@ -34,8 +54,8 @@ export const getPost = async (req,res)=>{
      }catch(err){
           res.status(404).json({msg:"error"})
      }
-
 }
+
 export const getPostUser = async (req,res)=>{console.log("faith");
      try{
      const {ui} = req.params;console.log(ui);
@@ -64,11 +84,17 @@ export const addFriend = async (req,res) =>{
      const {ui} = req.params;
      console.log(ui," ",req.body);
      let user = await Users.findById(req.body.F_id);
+     console.log("following",user.followers);
      user.followers.push(ui);
+     console.log("following",user.followers);
      user.save();
      user = await Users.findById(ui);
+     console.log("following",user.following);
      user.following.push(req.body.F_id);
+     //console.log("following",user.following);
      user.save();
+     console.log(user.following);
+     //user = await Users.findById(ui);
      return res.status(200).json({result:user,token:req.headers.authorization.split(" ")[1]});
 }
 

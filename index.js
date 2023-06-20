@@ -20,6 +20,8 @@ console.log("Life's weird");
 // Specify the custom path to your .env file
 
 connectDB();
+
+
 // const store = new MongoStore({
 //   url: 'mongodb+srv://admin:admin@cluster0.gygecir.mongodb.net/test',
 //   collection: 'sessions'
@@ -35,6 +37,9 @@ connectDB();
 //           maxAge: 1000*60*60*24*7
 //   }
 // }))
+
+
+
 const app = express();
 app.use(morgan('tiny'));
 app.use(express.json({ limit: "30mb", extended: true }));

@@ -8,9 +8,10 @@ import { removeFriend } from "../controllers/SocialMediaController.js";
 import  auth  from "../middleware/auth.js"
 import { getPostUser } from "../controllers/SocialMediaController.js";
 import { deletePost } from "../controllers/SocialMediaController.js";
-const upload = multer({ storage})
+const upload = multer()
+console.log(upload)
 const router = express.Router();
-router.post('/postupload/:ui', upload.single('file'),makePost);
+router.post('/postupload/:ui',upload.single('file'), makePost);   //upload.single('file'),
 router.get('/getposts/:ui',getPostUser);
 router.post('/addfriend/:ui',addFriend);
 router.post('/removefriend/:ui',removeFriend);
