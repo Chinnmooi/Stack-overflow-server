@@ -30,7 +30,7 @@
     "multer-storage-cloudinary": "^4.0.0",
     "nodemon": "^2.0.14",
     "openai": "^3.2.1",
-    "razorpay": "^2.8.6",
+    "razorpay": "^2.9.1",
     "stream": "^0.0.2"
   }
 }
