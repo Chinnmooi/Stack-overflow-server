@@ -5,7 +5,7 @@ export const getMessage = async (req, res) => {console.log(req.body)
     const instance = axios.create({
         baseURL: 'https://api.openai.com/v1/chat/completions',
         headers: {
-          'Authorization' : 'Bearer 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',//'Bearer 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',
+          'Authorization' : process.env.OPENAI_KEY,//'Bearer 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',
           'Content-Type' : 'application/json',
         },
       });
